@@ -1,41 +1,20 @@
 package Aufgaben;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Stack;
+
 public class Task {
     public static void main(String[] args) {
-        String[] arr = {"fldfdfower","fldfdfow","fldfdfight"};
+        int[] originalArray = {1,1,2};
 
-        String prefix= longestCommonPrefix(arr);
-        System.out.println(prefix);
+        System.out.println(removeDuplicates(originalArray));
+
 
     }
 
 
-    static String longestCommonPrefix(String[] strs) {
-        String shortestStr = strs[0];
-        for (String str : strs) {
-            if (str.length() < shortestStr.length()) {
-                shortestStr = str;
-            }
-        }
-
-        StringBuilder prefix = new StringBuilder();
-        for (int i = 0; i < shortestStr.length(); i++) {
-            char ch = shortestStr.charAt(i);
-            boolean allMatch = true;
-
-            for (String other : strs) {
-                if (other.charAt(i) != ch) {
-                    allMatch = false;
-                    break;
-                }
-            }
-
-            if (allMatch) {
-                prefix.append(ch);
-            } else {
-                break;
-            }
-        }
-        return prefix.toString();
+    public static int removeDuplicates(int[] nums) {
+        return (int)Arrays.stream(nums).distinct().count();
     }
 }
